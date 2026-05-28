@@ -1,19 +1,9 @@
 import { Sequelize, DataTypes } from 'sequelize'
 
-const sequelize = process.env.DATABASE_URL
-    ? new Sequelize(process.env.DATABASE_URL, {
-        dialect: 'postgres',
-        dialectOptions: {
-            ssl: {
-                require: true,
-                rejectUnauthorized: false
-            }
-        }
-    })
-    : new Sequelize({
-        dialect: 'sqlite',
-        storage: 'db.sqlite'
-    })
+const sequelize = new Sequelize({
+    dialect: 'sqlite',
+    storage: 'db.sqlite'
+})
 
 const Pelicula = sequelize.define('Pelicula', {
     id: {

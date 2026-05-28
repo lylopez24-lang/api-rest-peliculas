@@ -9,17 +9,17 @@ const app = express()
 app.use(express.json())
 app.use(logger)
 
-// 🔓 Ruta de login (sin seguridad)
+// login público
 app.use('/auth', authRoutes)
 
-// 🔐 A partir de aquí se aplica API KEY
+// API KEY desde aquí
 app.use(validarApiKey)
 
-// 🎬 Rutas protegidas
+// rutas protegidas
 app.use('/peliculas', peliculasRoutes)
 
 const PORT = process.env.PORT || 3000
 
 app.listen(PORT, () => {
-  console.log(`Servidor corriendo en puerto ${PORT}`)
+    console.log(`Servidor corriendo en puerto ${PORT}`)
 })
